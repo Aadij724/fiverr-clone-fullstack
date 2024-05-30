@@ -24,9 +24,11 @@ const connect = async () => {
   }
 };
 
-app.use(cors({ origin: "https://fiverr-clone-fullstack.netlify.app/" || "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "https://fiverr-clone-fullstack.netlify.app" || "http://localhost:5173", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
+
+app.options('*', cors());
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
