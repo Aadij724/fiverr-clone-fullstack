@@ -36,12 +36,21 @@ export const login = async (req, res, next) => {
     );
 
     const { password, ...info } = user._doc;
+    // res
+    //   .cookie("accessToken", token, {
+    //     httpOnly: true,
+    //   })
+    //   .status(200)
+    //   .send(info);
+
     res
-      .cookie("accessToken", token, {
-        httpOnly: true,
-      })
-      .status(200)
-      .send(info);
+    .cookie("accessToken", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // ensures the cookie is only sent over HTTPS in production
+      sameSite: 'none' // allows cross-site cookies
+    })
+    .status(200)
+    .send(info);
   } catch (err) {
     next(err);
   }
