@@ -11,7 +11,7 @@ export const createGig = async (req, res, next) => {
   });
 
   try {
-    const savedGig = await newGig.save();t6
+    const savedGig = await newGig.save();
     res.status(201).json(savedGig);
   } catch (err) {
     next(err, "some error while creating the gig");
