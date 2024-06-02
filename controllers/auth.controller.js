@@ -14,7 +14,7 @@ export const register = async (req, res, next) => {
 
     await newUser.save();
 
-    sendMailNewAcc( req.email );
+    sendMailNewAcc( req.body.email );
 
     res.status(201).send("User has been created.");
     

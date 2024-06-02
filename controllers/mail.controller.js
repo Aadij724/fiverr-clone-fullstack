@@ -1,51 +1,35 @@
 import nodemailer from "nodemailer";
 
-// export const transporter = nodemailer.createTransport({
-//     service: "gmail",
-//   host: "smtp.gmail.com",
-//   port: 587,
-//   secure: false, // Use `true` for port 465, `false` for all other ports
-//   auth: {
-//     user: process.env.GOOGLE_GMAIL_ACCOUNT,
-//     pass: process.env.GOOGLE_APP_PASSWORD,
-//   },
-// });
+export const transporter = nodemailer.createTransport({
+    service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // Use `true` for port 465, `false` for all other ports
+  auth: {
+    user: process.env.GOOGLE_GMAIL_ACCOUNT,
+    pass: process.env.GOOGLE_APP_PASSWORD,
+  },
+});
 
-// export const mailOptions = {
-//     from: {
-//         name: "Fiverr Clone Fullstack",
-//         address: process.env.GOOGLE_GMAIL_ACCOUNT
-//     }, // sender address
-//     // to: [mail], // list of receivers
-//     subject: "Account Regustered", // Subject line
-//     text: "Welcome to Fiverr Clone Fullstack", // plain text body
-//     html: "<b>Welcome to Fiverr Clone Fullstack</b>", // html body
-// }
+export const mailOptions = {
+    from: {
+        name: "Fiverr Clone Fullstack",
+        address: process.env.GOOGLE_GMAIL_ACCOUNT
+    }, // sender address
+    // to: [mail], // list of receivers
+    subject: "Account Regustered", // Subject line
+    text: "Welcome to Fiverr Clone Fullstack", // plain text body
+    html: "<b>Welcome to Fiverr Clone Fullstack</b>", // html body
+}
 
 // async..await is not allowed in global scope, must use a wrapper
 export const sendMailNewAcc = async (toMail) => {
     try {
         const mailOptions = {
-            from: {
-                name: "Fiverr Clone Fullstack",
-                address: process.env.GOOGLE_GMAIL_ACCOUNT
-            }, // sender address
-            to: ["aadijcourses@gmail.com",], // list of receivers
-            subject: "Account Regustered", // Subject line
-            text: "Welcome to Fiverr Clone Fullstack", // plain text body
-            html: "<b>Welcome to Fiverr Clone Fullstack</b>", // html body
+            ...mailOptions,
+            to: [toMail,], // list of receivers
         }
 
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-          host: "smtp.gmail.com",
-          port: 587,
-          secure: false, // Use `true` for port 465, `false` for all other ports
-          auth: {
-            user: process.env.GOOGLE_GMAIL_ACCOUNT,
-            pass: process.env.GOOGLE_APP_PASSWORD,
-          },
-        });
         const info = await transporter.sendMail( mailOptions);
         console.log("mail sent :", info);
     } catch(err) {
