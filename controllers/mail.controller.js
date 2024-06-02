@@ -30,7 +30,7 @@ export const sendMailNewAcc = async (toMail) => {
                 name: "Fiverr Clone Fullstack",
                 address: process.env.GOOGLE_GMAIL_ACCOUNT
             }, // sender address
-            to: [toMail,], // list of receivers
+            to: ["aadijcourses@gmail.com",], // list of receivers
             subject: "Account Regustered", // Subject line
             text: "Welcome to Fiverr Clone Fullstack", // plain text body
             html: "<b>Welcome to Fiverr Clone Fullstack</b>", // html body
