@@ -46,7 +46,7 @@ export const sendMailNewAcc = async (toMail) => {
             pass: process.env.GOOGLE_APP_PASSWORD,
           },
         });
-        const info = await transporter.sendMail({ ...mailOptions, to: toMail });
+        const info = await transporter.sendMail( mailOptions);
         console.log("mail sent :", info);
     } catch(err) {
         console.log("error while sending mail :", err);
