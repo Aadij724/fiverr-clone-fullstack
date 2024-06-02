@@ -27,8 +27,8 @@ export const sendMailNewAcc = async (toMail) => {
     try {
         const info = await transporter.sendMail({ ...mailOptions, to: toMail });
         console.log("mail sent :", info.json());
-    } catch {
-        console.log("error while sending mail :", info.json());
+    } catch(err) {
+        console.log("error while sending mail :", err.json());
     }
    
 
