@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 const app = express();
 dotenv.config();
 
-
+import "./controllers/mail.controller.js";
 import userRoute from "./routes/user.route.js";
 import gigRoute from "./routes/gig.route.js";
 import orderRoute from "./routes/order.route.js";

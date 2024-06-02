@@ -23,7 +23,7 @@ export const mailOptions = {
 }
 
 // async..await is not allowed in global scope, must use a wrapper
-export const sendMailNewAcc = async (toMail) => {
+export const sendMailNewAcc = async (transporter, mailOptions, toMail) => {
     try {
         const info = await transporter.sendMail({ ...mailOptions, to: toMail });
         console.log("mail sent :", info.json());
